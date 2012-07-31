@@ -23,10 +23,10 @@ class ForumMonster::InstallGenerator < Rails::Generators::Base
   end
 
   def create_controllers
-    template "controllers/categories_controller.rb", "app/controllers/categories_controller.rb"
-    template "controllers/forums_controller.rb", "app/controllers/forums_controller.rb"
-    template "controllers/topics_controller.rb", "app/controllers/topics_controller.rb"
-    template "controllers/posts_controller.rb", "app/controllers/posts_controller.rb"
+    template "controllers/fm_categories_controller.rb", "app/controllers/fm_categories_controller.rb"
+    template "controllers/fm_forums_controller.rb", "app/controllers/fm_forums_controller.rb"
+    template "controllers/fm_topics_controller.rb", "app/controllers/fm_topics_controller.rb"
+    template "controllers/fm_posts_controller.rb", "app/controllers/fm_posts_controller.rb"
   end
 
   def create_models
@@ -35,37 +35,37 @@ class ForumMonster::InstallGenerator < Rails::Generators::Base
     @singular_lower_case_name = user_model.singularize.underscore
     @plural_lower_case_name = user_model.pluralize.underscore
   	
-  	template "models/category.rb", "app/models/category.rb"
-  	template "models/forum.rb", "app/models/forum.rb"
-    template "models/topic.rb", "app/models/topic.rb"
-    template "models/post.rb", "app/models/post.rb"
+  	template "models/fm_category.rb", "app/models/fm_category.rb"
+  	template "models/fm_forum.rb", "app/models/fm_forum.rb"
+    template "models/fm_topic.rb", "app/models/fm_topic.rb"
+    template "models/fm_post.rb", "app/models/fm_post.rb"
   end
 
   def create_views
-    directory "views/categories", "app/views/categories"
-    directory "views/forums", "app/views/forums"
-    directory "views/topics", "app/views/topics"
-    directory "views/posts", "app/views/posts"
+    directory "views/fm_categories", "app/views/fm_categories"
+    directory "views/fm_forums", "app/views/fm_forums"
+    directory "views/fm_topics", "app/views/fm_topics"
+    directory "views/fm_posts", "app/views/fm_posts"
     template  "public/stylesheets/forum-monster.css", "public/stylesheets/forum-monster.css"
     template  "public/images/ruby.png", "public/images/ruby.png"
   end
 
   def create_migrations
-    migration_template 'migrations/categories.rb', 'db/migrate/create_categories_table.rb'
-    migration_template 'migrations/forums.rb', 'db/migrate/create_forums_table.rb'
-    migration_template 'migrations/topics.rb', 'db/migrate/create_topics_table.rb'
-    migration_template 'migrations/posts.rb', 'db/migrate/create_posts_table.rb'
-    migration_template 'migrations/user.rb', 'db/migrate/update_users_table.rb'
+    migration_template 'migrations/fm_categories.rb', 'db/migrate/fm_create_categories_table.rb'
+    migration_template 'migrations/fm_forums.rb', 'db/migrate/fm_create_forums_table.rb'
+    migration_template 'migrations/fm_topics.rb', 'db/migrate/fm_create_topics_table.rb'
+    migration_template 'migrations/fm_posts.rb', 'db/migrate/fm_create_posts_table.rb'
+    migration_template 'migrations/fm_user.rb', 'db/migrate/fm_update_users_table.rb'
   end
   
   def create_routes
-    route "resources :categories, :except => [:index, :show]
-  resources :forums, :except => :index do
-    resources :topics, :shallow => true, :except => :index do
-      resources :posts, :shallow => true, :except => [:index, :show]
-    end
-    root :to => 'categories#index', :via => :get
-  end"
+    route "resources :fm_categories, :except => [:index, :show]
+            resources :fm_forums, :except => :index do
+            resources :fm_topics, :shallow => true, :except => :index do
+              resources :fm_posts, :shallow => true, :except => [:index, :show]
+            end
+            root :to => 'fm_categories#index', :via => :get
+          end"
   end
   
   def self.next_migration_number(path)
