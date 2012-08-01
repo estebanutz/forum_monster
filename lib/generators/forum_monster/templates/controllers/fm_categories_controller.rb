@@ -8,7 +8,7 @@ class FmCategoriesController < ApplicationController
   end
   
   def create
-    @category = FmCategory.new(params[:category])
+    @category = FmCategory.new(params[:fm_category])
     
     if @category.save
       flash[:notice] = "Category was successfully created."

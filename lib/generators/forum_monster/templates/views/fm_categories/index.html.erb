@@ -26,7 +26,7 @@
             <span class="smaller"><%= forum.description %></span><br />
           </td>
           <td class="counts smaller"><%= forum.fm_topics.size %></td>
-          <td class="counts smaller"><%= forum.fm_posts.size - forum.topics.size %></td>
+          <td class="counts smaller"><%= forum.fm_posts.size - forum.fm_topics.size %></td>
           <td class="last_post smaller">
             <% if forum.fm_posts.size > 0 %>
               <%= forum.fm_posts.last.created_at %><br />

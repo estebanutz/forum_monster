@@ -26,7 +26,7 @@ class FmPost < ActiveRecord::Base
   # Methods
   private
     def topic_locked?
-      if topic.locked?
+      if fm_topic.locked?
         errors.add(:base, "That topic is locked")
         false
       end
