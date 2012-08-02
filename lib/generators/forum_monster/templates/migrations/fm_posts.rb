@@ -1,4 +1,4 @@
-class FmCreateFmPostsTable < ActiveRecord::Migration
+class FmCreatePostsTable < ActiveRecord::Migration
   def self.up
     create_table :fm_posts, :force => true do |t|
       t.text     :body
