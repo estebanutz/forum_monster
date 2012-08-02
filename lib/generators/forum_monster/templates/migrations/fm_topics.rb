@@ -1,4 +1,4 @@
-class FmCreateFmTopicsTable < ActiveRecord::Migration
+class FmCreateTopicsTable < ActiveRecord::Migration
   def self.up
     create_table :fm_topics, :force => true do |t|
       t.string   :title

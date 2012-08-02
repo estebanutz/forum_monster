@@ -4,7 +4,7 @@ class FmPostsController < ApplicationController
     @post = FmPost.new
     
     if params[:quote]
-      quote_post = FmPost.find(params[:fm_quote])
+      quote_post = FmPost.find(params[:quote])
       if quote_post
         @post.body = quote_post.body
       end
@@ -41,13 +41,13 @@ class FmPostsController < ApplicationController
   def destroy
     @post = FmPost.find(params[:id])
     
-    if @post.fm_topic.posts_count > 1
+    if @post.fm_topic.fm_posts_count > 1
       if @post.destroy
         flash[:notice] = "Post was successfully destroyed."
         redirect_to fm_topic_path(@post.fm_topic)
       end
     else
-      if @post.topic.destroy
+      if @post.fm_topic.destroy
         flash[:notice] = "Topic was successfully deleted."
         redirect_to fm_forum_path(@post.fm_forum)
       end
