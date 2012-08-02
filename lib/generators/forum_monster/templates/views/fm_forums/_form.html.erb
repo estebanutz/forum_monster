@@ -10,11 +10,11 @@
       <% end %>
       <div class="fieldset">
         <span class="label indent smaller">
-          <%= f.label :category_id %><br />
+          <%= f.label :fm_category_id %><br />
           <small>(Required)</small>
         </span>
         <span class="input indent smaller">
-          <%= f.collection_select :category_id, FmCategory.all, :id, :title %>
+          <%= f.collection_select :fm_category_id, FmCategory.all, :id, :title %>
         </span>
         <div class="clear"></div>
       </div>

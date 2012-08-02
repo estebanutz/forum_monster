@@ -1,11 +1,11 @@
-class CreateFmForumsTable < ActiveRecord::Migration
+class FmCreateFmForumsTable < ActiveRecord::Migration
   def self.up
     create_table :fm_forums, :force => true do |t|
       t.string   :title
       t.text     :description
       t.boolean  :state, :default => true
-      t.integer  :topics_count, :default => 0
-      t.integer  :posts_count, :default => 0
+      t.integer  :fm_topics_count, :default => 0
+      t.integer  :fm_posts_count, :default => 0
       t.integer  :position, :default => 0
       t.integer  :fm_category_id
 

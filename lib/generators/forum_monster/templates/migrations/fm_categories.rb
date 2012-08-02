@@ -1,4 +1,4 @@
-class CreateFmCategoriesTable < ActiveRecord::Migration
+class FmCreateCategoriesTable < ActiveRecord::Migration
   def self.up
     create_table :fm_categories, :force => true do |t|
       t.string   :title
@@ -10,6 +10,6 @@ class CreateFmCategoriesTable < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :fmcategories
+    drop_table :fm_categories
   end
 end

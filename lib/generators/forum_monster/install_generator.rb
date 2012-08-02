@@ -55,7 +55,7 @@ class ForumMonster::InstallGenerator < Rails::Generators::Base
     migration_template 'migrations/fm_forums.rb', 'db/migrate/fm_create_forums_table.rb'
     migration_template 'migrations/fm_topics.rb', 'db/migrate/fm_create_topics_table.rb'
     migration_template 'migrations/fm_posts.rb', 'db/migrate/fm_create_posts_table.rb'
-    migration_template 'migrations/fm_user.rb', 'db/migrate/fm_update_users_table.rb'
+    migration_template 'migrations/fm_user.rb', "db/migrate/fm_update_#{user_model.pluralize.underscore}_table.rb"
   end
   
   def create_routes

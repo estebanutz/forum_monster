@@ -28,8 +28,8 @@ class FmTopic < ActiveRecord::Base
   
   private
     def create_initial_post
-      self.posts.build(:body => self.body).tap do |post|
-        post.forum = self.forum
+      self.fm_posts.build(:body => self.body).tap do |post|
+        post.fm_forum = self.fm_forum
         post.user = self.user
         post.save
       end

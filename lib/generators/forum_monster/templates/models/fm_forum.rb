@@ -2,7 +2,7 @@ class FmForum < ActiveRecord::Base
   
   # Associations
   has_many :fm_topics, :dependent => :destroy
-  has_many :fm_posts, :through => :topics
+  has_many :fm_posts, :through => :fm_topics
   
   belongs_to :fm_category
   
